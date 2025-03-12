@@ -79,6 +79,9 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
             overflow: hidden;
             border: 2px solid #F9A825;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
 
         .card-front::before {
@@ -88,13 +91,31 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.1);
             z-index: 1;
         }
 
-        .card-front > * {
-            position: relative;
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            text-align: center;
             z-index: 2;
+        }
+
+        .card-content h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #00539C;
+        }
+
+        .card-content p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            color: #00539C;
         }
 
         .card-image {
@@ -213,9 +234,10 @@
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/queen-mother.jpg" alt="สมเด็จพระบรมราชชนนีพันปีหลวง" class="card-image">
-                    <div class="royal-icon"><i class="fas fa-gem"></i></div>
-                    <h2>สมเด็จพระบรมราชชนนีพันปีหลวง</h2>
-                    <p>12 สิงหาคม</p>
+                    <div class="card-content">
+                        <h2>สมเด็จพระบรมราชชนนีพันปีหลวง</h2>
+                        <p>12 สิงหาคม</p>
+                    </div>
                 </div>
                 <div class="card-back queen-mother-back">
                     <h2>น้อมรำลึกในพระมหากรุณาธิคุณ</h2>
@@ -227,15 +249,16 @@
                 </div>
             </div>
         </div>
-      
-      <!-- วันเฉลิมพระชนมพรรษา -->
+
+        <!-- วันเฉลิมพระชนมพรรษา -->
         <div class="card">
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/birthday.jpg" alt="วันเฉลิมพระชนมพรรษา" class="card-image">
-                    <div class="royal-icon"><i class="fas fa-crown"></i></div>
-                    <h2>วันเฉลิมพระชนมพรรษา</h2>
-                    <p>28 กรกฎาคม</p>
+                    <div class="card-content">
+                        <h2>วันเฉลิมพระชนมพรรษา</h2>
+                        <p>28 กรกฎาคม</p>
+                    </div>
                 </div>
                 <div class="card-back birthday-back">
                     <h2>ขอพระองค์ทรงพระเจริญ</h2>
@@ -253,9 +276,10 @@
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/born.jpg" alt="วันประสูติ" class="card-image">
-                    <div class="royal-icon"><i class="fas fa-birthday-cake"></i></div>
-                    <h2>วันประสูติ</h2>
-                    <p>28 กรกฎาคม 2495</p>
+                    <div class="card-content">
+                        <h2>วันประสูติ</h2>
+                        <p>28 กรกฎาคม 2495</p>
+                    </div>
                 </div>
                 <div class="card-back birthday-back">
                     <h2>เนื่องในวันประสูติ</h2>
@@ -273,9 +297,10 @@
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/coronation.jpg" alt="วันฉัตรมงคล" class="card-image">
-                    <div class="royal-icon"><i class="fas fa-chess-rook"></i></div>
-                    <h2>วันฉัตรมงคล</h2>
-                    <p>4 พฤษภาคม</p>
+                    <div class="card-content">
+                        <h2>วันฉัตรมงคล</h2>
+                        <p>4 พฤษภาคม</p>
+                    </div>
                 </div>
                 <div class="card-back coronation-back">
                     <h2>เนื่องในวันฉัตรมงคล</h2>
@@ -293,9 +318,10 @@
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/queen.jpg" alt="สมเด็จพระนางเจ้าฯ พระบรมราชินี" class="card-image">
-                    <div class="royal-icon"><i class="fas fa-gem"></i></div>
-                    <h2>สมเด็จพระนางเจ้าฯ พระบรมราชินี</h2>
-                    <p>3 มิถุนายน</p>
+                    <div class="card-content">
+                        <h2>สมเด็จพระนางเจ้าฯ พระบรมราชินี</h2>
+                        <p>3 มิถุนายน</p>
+                    </div>
                 </div>
                 <div class="card-back coronation-back">
                     <h2>ขอพระองค์ทรงพระเจริญ</h2>
@@ -313,9 +339,10 @@
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/fathersday.jpg" alt="วันพ่อแห่งชาติ" class="card-image">
-                    <div class="royal-icon"><i class="fas fa-heart"></i></div>
-                    <h2>วันพ่อแห่งชาติ</h2>
-                    <p>28 กรกฎาคม</p>
+                    <div class="card-content">
+                        <h2>วันพ่อแห่งชาติ</h2>
+                        <p>28 กรกฎาคม</p>
+                    </div>
                 </div>
                 <div class="card-back fathersday-back">
                     <h2>ด้วยความจงรักภักดี</h2>
@@ -333,9 +360,10 @@
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/princess1.jpg" alt="สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าพัชรกิติยาภาฯ" class="card-image">
-                    <div class="royal-icon"><i class="fas fa-star"></i></div>
-                    <h2>สมเด็จพระเจ้าลูกเธอ</h2>
-                    <p>เจ้าฟ้าพัชรกิติยาภาฯ</p>
+                    <div class="card-content">
+                        <h2>สมเด็จพระเจ้าลูกเธอ</h2>
+                        <p>เจ้าฟ้าพัชรกิติยาภาฯ</p>
+                    </div>
                 </div>
                 <div class="card-back newyear-back">
                     <h2>ขอพระองค์ทรงพระเจริญ</h2>
@@ -353,9 +381,10 @@
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/princess2.jpg" alt="สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าสิริวัณณวรีฯ" class="card-image">
-                    <div class="royal-icon"><i class="fas fa-star"></i></div>
-                    <h2>สมเด็จพระเจ้าลูกเธอ</h2>
-                    <p>เจ้าฟ้าสิริวัณณวรีฯ</p>
+                    <div class="card-content">
+                        <h2>สมเด็จพระเจ้าลูกเธอ</h2>
+                        <p>เจ้าฟ้าสิริวัณณวรีฯ</p>
+                    </div>
                 </div>
                 <div class="card-back nationalday-back">
                     <h2>ขอพระองค์ทรงพระเจริญ</h2>
@@ -373,9 +402,10 @@
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/prince.jpg" alt="สมเด็จพระเจ้าลูกยาเธอ เจ้าฟ้าทีปังกรฯ" class="card-image">
-                    <div class="royal-icon"><i class="fas fa-star"></i></div>
-                    <h2>สมเด็จพระเจ้าลูกยาเธอ</h2>
-                    <p>เจ้าฟ้าทีปังกรฯ</p>
+                    <div class="card-content">
+                        <h2>สมเด็จพระเจ้าลูกยาเธอ</h2>
+                        <p>เจ้าฟ้าทีปังกรฯ</p>
+                    </div>
                 </div>
                 <div class="card-back general-back">
                     <h2>ขอพระองค์ทรงพระเจริญ</h2>
@@ -388,16 +418,15 @@
             </div>
         </div>
 
-
-
         <!-- ถวายพระพรทั่วไป -->
         <div class="card">
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/general.jpg" alt="ถวายพระพรทั่วไป" class="card-image">
-                    <div class="royal-icon"><i class="fas fa-dove"></i></div>
-                    <h2>ถวายพระพร</h2>
-                    <p>ทรงพระเจริญ</p>
+                    <div class="card-content">
+                        <h2>ถวายพระพร</h2>
+                        <p>ทรงพระเจริญ</p>
+                    </div>
                 </div>
                 <div class="card-back general-back">
                     <h2>ด้วยความจงรักภักดี</h2>
