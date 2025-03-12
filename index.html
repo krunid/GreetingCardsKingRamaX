@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การ์ดลงนามถวายพระพรในรัชกาลที่ 10</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Prompt', 'Sarabun', sans-serif;
+            background: linear-gradient(to bottom, #FFDF00, #FFF9C4, #F9F8EB);
+            background-attachment: fixed;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #00539C;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            padding: 20px 0;
+        }
+
+        .card {
+            width: 300px;
+            height: 400px;
+            perspective: 1000px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .card-front {
+            color: #00539C;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 2px solid #F9A825;
+        }
+
+        .card-front::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.5);
+            z-index: 1;
+        }
+
+        .card-front > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            z-index: 0;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            color: #00539C;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+
+        .royal-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #F9A825;
+        }
+
+        .footer {
+            width: 100%;
+            background-color: rgba(0, 83, 156, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+        
+        .footer p {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                width: 280px;
+                height: 380px;
+                margin-bottom: 40px;
+            }
+            
+            .card-container {
+                gap: 40px;
+            }
+        }
+
+        /* สีพื้นหลังด้านหลังการ์ด */
+        .birthday-back {
+            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
+        }
+        
+        .coronation-back {
+            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
+        }
+        
+        .fathersday-back {
+            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
+        }
+        
+        .newyear-back {
+            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
+        }
+        
+        .nationalday-back {
+            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
+        }
+        
+        .general-back {
+            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
+        }
+        
+        .queen-back {
+            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
+        }
+        
+        .princess-back {
+            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
+        }
+        
+        .prince-back {
+            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
+        }
+        
+        .queen-mother-back {
+            background: linear-gradient(315deg, #91A3B0 0%, #C1D9E5 100%);
+        }
+
+        .signature-area {
+            margin-top: 20px;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .signature-line {
+            width: 80%;
+            height: 1px;
+            background-color: #00539C;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>การ์ดลงนามถวายพระพรในรัชกาลที่ 10</h1>
+    <p style="color: #00539C; text-align: center; margin-bottom: 20px;">กดที่การ์ดเพื่อลงนามถวายพระพร</p>
+    
+    <div class="card-container">
+        <!-- สมเด็จพระบรมราชชนนีพันปีหลวง -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/queen-mother.jpg" alt="สมเด็จพระบรมราชชนนีพันปีหลวง" class="card-image">
+                    <div class="royal-icon"><i class="fas fa-gem"></i></div>
+                    <h2>สมเด็จพระบรมราชชนนีพันปีหลวง</h2>
+                    <p>12 สิงหาคม</p>
+                </div>
+                <div class="card-back queen-mother-back">
+                    <h2>น้อมรำลึกในพระมหากรุณาธิคุณ</h2>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอน้อมรำลึกในพระมหากรุณาธิคุณ ของสมเด็จพระบรมราชชนนีพันปีหลวง ผู้ทรงเป็นแม่ของแผ่นดิน พระองค์ทรงเป็นมิ่งขวัญของพสกนิกรชาวไทยตลอดไป</p>
+                    <div class="signature-area">
+                        <div class="signature-line"></div>
+                        <p>ลงนามถวายความเคารพ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+      <!-- วันเฉลิมพระชนมพรรษา -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/birthday.jpg" alt="วันเฉลิมพระชนมพรรษา" class="card-image">
+                    <div class="royal-icon"><i class="fas fa-crown"></i></div>
+                    <h2>วันเฉลิมพระชนมพรรษา</h2>
+                    <p>28 กรกฎาคม</p>
+                </div>
+                <div class="card-back birthday-back">
+                    <h2>ขอพระองค์ทรงพระเจริญ</h2>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล ขอพระองค์ทรงพระเจริญยิ่งยืนนาน</p>
+                    <div class="signature-area">
+                        <div class="signature-line"></div>
+                        <p>ลงนามถวายพระพร</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- วันประสูติ -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/born.jpg" alt="วันประสูติ" class="card-image">
+                    <div class="royal-icon"><i class="fas fa-birthday-cake"></i></div>
+                    <h2>วันประสูติ</h2>
+                    <p>28 กรกฎาคม 2495</p>
+                </div>
+                <div class="card-back birthday-back">
+                    <h2>เนื่องในวันประสูติ</h2>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล เนื่องในวันคล้ายวันประสูติ ขอพระองค์ทรงพระเจริญ ทรงมีพระชนมายุยิ่งยืนนาน เป็นมิ่งขวัญของปวงชนชาวไทยตลอดไป</p>
+                    <div class="signature-area">
+                        <div class="signature-line"></div>
+                        <p>ลงนามถวายพระพร</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- วันฉัตรมงคล -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/coronation.jpg" alt="วันฉัตรมงคล" class="card-image">
+                    <div class="royal-icon"><i class="fas fa-chess-rook"></i></div>
+                    <h2>วันฉัตรมงคล</h2>
+                    <p>4 พฤษภาคม</p>
+                </div>
+                <div class="card-back coronation-back">
+                    <h2>เนื่องในวันฉัตรมงคล</h2>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล ขอพระองค์ทรงพระเจริญ มีพระชนมายุยิ่งยืนนาน เป็นมิ่งขวัญของปวงชนชาวไทยตลอดไป</p>
+                    <div class="signature-area">
+                        <div class="signature-line"></div>
+                        <p>ลงนามถวายพระพร</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- สมเด็จพระนางเจ้าฯ พระบรมราชินี -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/queen.jpg" alt="สมเด็จพระนางเจ้าฯ พระบรมราชินี" class="card-image">
+                    <div class="royal-icon"><i class="fas fa-gem"></i></div>
+                    <h2>สมเด็จพระนางเจ้าฯ พระบรมราชินี</h2>
+                    <p>3 มิถุนายน</p>
+                </div>
+                <div class="card-back coronation-back">
+                    <h2>ขอพระองค์ทรงพระเจริญ</h2>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล แด่สมเด็จพระนางเจ้าฯ พระบรมราชินี ขอพระองค์ทรงพระเจริญยิ่งยืนนาน คู่เคียงพระบาทสมเด็จพระเจ้าอยู่หัว</p>
+                    <div class="signature-area">
+                        <div class="signature-line"></div>
+                        <p>ลงนามถวายพระพร</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- วันพ่อแห่งชาติ -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/fathersday.jpg" alt="วันพ่อแห่งชาติ" class="card-image">
+                    <div class="royal-icon"><i class="fas fa-heart"></i></div>
+                    <h2>วันพ่อแห่งชาติ</h2>
+                    <p>28 กรกฎาคม</p>
+                </div>
+                <div class="card-back fathersday-back">
+                    <h2>ด้วยความจงรักภักดี</h2>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล ขอพระองค์ทรงพระเจริญ พระบารมีปกเกล้าปกกระหม่อมชาวไทยให้ร่มเย็นเป็นสุขตลอดไป</p>
+                    <div class="signature-area">
+                        <div class="signature-line"></div>
+                        <p>ลงนามถวายพระพร</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าพัชรกิติยาภาฯ -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/princess1.jpg" alt="สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าพัชรกิติยาภาฯ" class="card-image">
+                    <div class="royal-icon"><i class="fas fa-star"></i></div>
+                    <h2>สมเด็จพระเจ้าลูกเธอ</h2>
+                    <p>เจ้าฟ้าพัชรกิติยาภาฯ</p>
+                </div>
+                <div class="card-back newyear-back">
+                    <h2>ขอพระองค์ทรงพระเจริญ</h2>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล แด่สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าพัชรกิติยาภา นเรนทิราเทพยวดี กรมหลวงราชสาริณีสิริพัชร มหาวัชรราชธิดา ขอพระองค์ทรงพระเจริญ</p>
+                    <div class="signature-area">
+                        <div class="signature-line"></div>
+                        <p>ลงนามถวายพระพร</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าสิริวัณณวรีฯ -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/princess2.jpg" alt="สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าสิริวัณณวรีฯ" class="card-image">
+                    <div class="royal-icon"><i class="fas fa-star"></i></div>
+                    <h2>สมเด็จพระเจ้าลูกเธอ</h2>
+                    <p>เจ้าฟ้าสิริวัณณวรีฯ</p>
+                </div>
+                <div class="card-back nationalday-back">
+                    <h2>ขอพระองค์ทรงพระเจริญ</h2>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล แด่สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าสิริวัณณวรี นารีรัตนราชกัญญา ขอพระองค์ทรงพระเจริญ มีพระพลานามัยแข็งแรงสมบูรณ์</p>
+                    <div class="signature-area">
+                        <div class="signature-line"></div>
+                        <p>ลงนามถวายพระพร</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- สมเด็จพระเจ้าลูกยาเธอ เจ้าฟ้าทีปังกรฯ -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/prince.jpg" alt="สมเด็จพระเจ้าลูกยาเธอ เจ้าฟ้าทีปังกรฯ" class="card-image">
+                    <div class="royal-icon"><i class="fas fa-star"></i></div>
+                    <h2>สมเด็จพระเจ้าลูกยาเธอ</h2>
+                    <p>เจ้าฟ้าทีปังกรฯ</p>
+                </div>
+                <div class="card-back general-back">
+                    <h2>ขอพระองค์ทรงพระเจริญ</h2>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล แด่สมเด็จพระเจ้าลูกยาเธอ เจ้าฟ้าทีปังกรรัศมีโชติ มหาวชิโรตตมางกูร สิริวิบูลยราชกุมาร ขอพระองค์ทรงพระเจริญ</p>
+                    <div class="signature-area">
+                        <div class="signature-line"></div>
+                        <p>ลงนามถวายพระพร</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- ถวายพระพรทั่วไป -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/general.jpg" alt="ถวายพระพรทั่วไป" class="card-image">
+                    <div class="royal-icon"><i class="fas fa-dove"></i></div>
+                    <h2>ถวายพระพร</h2>
+                    <p>ทรงพระเจริญ</p>
+                </div>
+                <div class="card-back general-back">
+                    <h2>ด้วยความจงรักภักดี</h2>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล ขอพระองค์ทรงพระเจริญ พระบารมีแผ่ไพศาล ทรงมีพระพลานามัยแข็งแรงสมบูรณ์</p>
+                    <div class="signature-area">
+                        <div class="signature-line"></div>
+                        <p>ลงนามถวายพระพร</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 การ์ดลงนามถวายพระพรในรัชกาลที่ 10</p>
+        <p>ออกแบบด้วยความจงรักภักดี</p>
+        <p>เพื่อเทิดพระเกียรติพระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว</p>
+    </footer>
+
+    <script>
+        // จัดการรูปภาพที่โหลดไม่ได้
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.card-image');
+            images.forEach(img => {
+                img.crossOrigin = "anonymous";
+                
+                // เมื่อรูปภาพโหลดไม่ได้ ให้ใช้สีพื้นหลังแทน
+                img.onerror = function() {
+                    console.log('ไม่สามารถโหลดรูปภาพได้:', img.src);
+                    const cardFront = img.closest('.card-front');
+                    img.style.display = 'none'; // ซ่อนรูปที่โหลดไม่ได้
+                    
+                    // ให้ใช้สีพื้นหลังแทนตามประเภทการ์ด
+                    if (cardFront) {
+                        if (img.alt === 'วันเฉลิมพระชนมพรรษา' || img.alt === 'วันประสูติ') {
+                            cardFront.style.backgroundColor = '#FFDF00';
+                        } else if (img.alt === 'วันฉัตรมงคล') {
+                            cardFront.style.backgroundColor = '#FFF9C4';
+                        } else if (img.alt === 'วันพ่อแห่งชาติ') {
+                            cardFront.style.backgroundColor = '#FFF9C4';
+                        } else if (img.alt === 'สมเด็จพระนางเจ้าฯ พระบรมราชินี') {
+                            cardFront.style.backgroundColor = '#FFDF00';
+                        } else if (img.alt === 'สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าพัชรกิติยาภาฯ') {
+                            cardFront.style.backgroundColor = '#FFF9C4';
+                        } else if (img.alt === 'สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าสิริวัณณวรีฯ') {
+                            cardFront.style.backgroundColor = '#FFDF00';
+                        } else if (img.alt === 'สมเด็จพระเจ้าลูกยาเธอ เจ้าฟ้าทีปังกรฯ') {
+                            cardFront.style.backgroundColor = '#FFF9C4';
+                        } else if (img.alt === 'สมเด็จพระบรมราชชนนีพันปีหลวง') {
+                            cardFront.style.backgroundColor = '#91A3B0';
+                        } else if (img.alt === 'ถวายพระพรทั่วไป') {
+                            cardFront.style.backgroundColor = '#FFDF00';
+                        } else {
+                            cardFront.style.backgroundColor = '#FFDF00'; // สีเริ่มต้น
+                        }
+                    }
+                };
+            });
+        });
+
+        // จัดการการพลิกการ์ด
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                // สลับคลาส flipped เพื่อพลิกการ์ด
+                const cardInner = card.querySelector('.card-inner');
+                cardInner.classList.toggle('flipped');
+            });
+        });
+    </script>
+</body>
+</html>
