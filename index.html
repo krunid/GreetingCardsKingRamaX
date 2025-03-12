@@ -18,6 +18,69 @@
             min-height: 100vh;
         }
 
+        .login-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .login-box {
+            text-align: center;
+        }
+
+        .login-box h2 {
+            color: #00539C;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #00539C;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Sarabun', sans-serif;
+        }
+
+        .submit-btn {
+            background-color: #00539C;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: 'Sarabun', sans-serif;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #003c7a;
+        }
+
+        .main-content {
+            width: 100%;
+        }
+
         h1 {
             color: #00539C;
             text-align: center;
@@ -180,6 +243,13 @@
             margin: 5px 0;
             font-size: 0.8rem;
         }
+        
+        .signer-name {
+            font-weight: bold;
+            color: #00539C;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
 
         .footer {
             width: 100%;
@@ -209,8 +279,109 @@
     </style>
 </head>
 <body>
-    <h1>การ์ดลงนามถวายพระพรในรัชกาลที่ 10</h1>
-    <p style="color: #00539C; text-align: center; margin-bottom: 20px;">กดที่การ์ดเพื่อลงนามถวายพระพร</p>
+    <div id="login-page" class="login-container">
+        <div class="login-box">
+            <h2>ลงทะเบียนถวายพระพร</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="name">ชื่อ-นามสกุล:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="organization">หน่วยงาน/องค์กร (ถ้ามี):</label>
+                    <input type="text" id="organization" name="organization">
+                </div>
+                <div class="form-group">
+                    <label for="province">จังหวัด:</label>
+                    <select id="province" name="province" required>
+                        <option value="">-- เลือกจังหวัด --</option>
+                        <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
+                        <option value="กระบี่">กระบี่</option>
+                        <option value="กาญจนบุรี">กาญจนบุรี</option>
+                        <option value="กาฬสินธุ์">กาฬสินธุ์</option>
+                        <option value="กำแพงเพชร">กำแพงเพชร</option>
+                        <option value="ขอนแก่น">ขอนแก่น</option>
+                        <option value="จันทบุรี">จันทบุรี</option>
+                        <option value="ฉะเชิงเทรา">ฉะเชิงเทรา</option>
+                        <option value="ชลบุรี">ชลบุรี</option>
+                        <option value="ชัยนาท">ชัยนาท</option>
+                        <option value="ชัยภูมิ">ชัยภูมิ</option>
+                        <option value="ชุมพร">ชุมพร</option>
+                        <option value="เชียงราย">เชียงราย</option>
+                        <option value="เชียงใหม่">เชียงใหม่</option>
+                        <option value="ตรัง">ตรัง</option>
+                        <option value="ตราด">ตราด</option>
+                        <option value="ตาก">ตาก</option>
+                        <option value="นครนายก">นครนายก</option>
+                        <option value="นครปฐม">นครปฐม</option>
+                        <option value="นครพนม">นครพนม</option>
+                        <option value="นครราชสีมา">นครราชสีมา</option>
+                        <option value="นครศรีธรรมราช">นครศรีธรรมราช</option>
+                        <option value="นครสวรรค์">นครสวรรค์</option>
+                        <option value="นนทบุรี">นนทบุรี</option>
+                        <option value="นราธิวาส">นราธิวาส</option>
+                        <option value="น่าน">น่าน</option>
+                        <option value="บึงกาฬ">บึงกาฬ</option>
+                        <option value="บุรีรัมย์">บุรีรัมย์</option>
+                        <option value="ปทุมธานี">ปทุมธานี</option>
+                        <option value="ประจวบคีรีขันธ์">ประจวบคีรีขันธ์</option>
+                        <option value="ปราจีนบุรี">ปราจีนบุรี</option>
+                        <option value="ปัตตานี">ปัตตานี</option>
+                        <option value="พระนครศรีอยุธยา">พระนครศรีอยุธยา</option>
+                        <option value="พะเยา">พะเยา</option>
+                        <option value="พังงา">พังงา</option>
+                        <option value="พัทลุง">พัทลุง</option>
+                        <option value="พิจิตร">พิจิตร</option>
+                        <option value="พิษณุโลก">พิษณุโลก</option>
+                        <option value="เพชรบุรี">เพชรบุรี</option>
+                        <option value="เพชรบูรณ์">เพชรบูรณ์</option>
+                        <option value="แพร่">แพร่</option>
+                        <option value="ภูเก็ต">ภูเก็ต</option>
+                        <option value="มหาสารคาม">มหาสารคาม</option>
+                        <option value="มุกดาหาร">มุกดาหาร</option>
+                        <option value="แม่ฮ่องสอน">แม่ฮ่องสอน</option>
+                        <option value="ยโสธร">ยโสธร</option>
+                        <option value="ยะลา">ยะลา</option>
+                        <option value="ร้อยเอ็ด">ร้อยเอ็ด</option>
+                        <option value="ระนอง">ระนอง</option>
+                        <option value="ระยอง">ระยอง</option>
+                        <option value="ราชบุรี">ราชบุรี</option>
+                        <option value="ลพบุรี">ลพบุรี</option>
+                        <option value="ลำปาง">ลำปาง</option>
+                        <option value="ลำพูน">ลำพูน</option>
+                        <option value="เลย">เลย</option>
+                        <option value="ศรีสะเกษ">ศรีสะเกษ</option>
+                        <option value="สกลนคร">สกลนคร</option>
+                        <option value="สงขลา">สงขลา</option>
+                        <option value="สตูล">สตูล</option>
+                        <option value="สมุทรปราการ">สมุทรปราการ</option>
+                        <option value="สมุทรสงคราม">สมุทรสงคราม</option>
+                        <option value="สมุทรสาคร">สมุทรสาคร</option>
+                        <option value="สระแก้ว">สระแก้ว</option>
+                        <option value="สระบุรี">สระบุรี</option>
+                        <option value="สิงห์บุรี">สิงห์บุรี</option>
+                        <option value="สุโขทัย">สุโขทัย</option>
+                        <option value="สุพรรณบุรี">สุพรรณบุรี</option>
+                        <option value="สุราษฎร์ธานี">สุราษฎร์ธานี</option>
+                        <option value="สุรินทร์">สุรินทร์</option>
+                        <option value="หนองคาย">หนองคาย</option>
+                        <option value="หนองบัวลำภู">หนองบัวลำภู</option>
+                        <option value="อ่างทอง">อ่างทอง</option>
+                        <option value="อำนาจเจริญ">อำนาจเจริญ</option>
+                        <option value="อุดรธานี">อุดรธานี</option>
+                        <option value="อุตรดิตถ์">อุตรดิตถ์</option>
+                        <option value="อุทัยธานี">อุทัยธานี</option>
+                        <option value="อุบลราชธานี">อุบลราชธานี</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">เข้าสู่หน้าถวายพระพร</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="main-content" class="main-content" style="display: none;">
+        <h1>การ์ดลงนามถวายพระพรในรัชกาลที่ 10</h1>
+        <p style="color: #00539C; text-align: center; margin-bottom: 20px;">กดที่การ์ดเพื่อลงนามถวายพระพร</p>
     
     <div class="card-container">
         <!-- สมเด็จพระบรมราชชนนีพันปีหลวง -->
@@ -229,6 +400,7 @@
                     <p>ข้าพระพุทธเจ้าขอน้อมรำลึกในพระมหากรุณาธิคุณ</p> 
                     <p>สมเด็จพระบรมราชชนนีพันปีหลวง</p>
                     <div class="signature-area">
+                        <div id="signer-name" class="signer-name"></div>
                         <div class="signature-line"></div>
                         <p>ลงนามถวายความเคารพ</p>
                     </div>
@@ -252,6 +424,7 @@
                     <p>ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล</p>
                     <p>แด่พระบาทสมเด็จพระเจ้าอยู่หัว</p>
                     <div class="signature-area">
+                        <div class="signer-name"></div>
                         <div class="signature-line"></div>
                         <p>ลงนามถวายพระพร</p>
                     </div>
@@ -445,6 +618,8 @@
     </div>
     </div>
 
+    </div>
+
     <footer class="footer">
         <p>© 2025 การ์ดลงนามถวายพระพรในรัชกาลที่ 10</p>
         <p>ออกแบบด้วยความจงรักภักดี</p>
@@ -454,6 +629,38 @@
     <script>
         // จัดการรูปภาพที่โหลดไม่ได้
         document.addEventListener('DOMContentLoaded', function() {
+            // ตัวแปรส่วนกลางสำหรับเก็บข้อมูลผู้ใช้
+            let userData = {
+                name: '',
+                organization: '',
+                province: ''
+            };
+            
+            // ตรวจสอบการลงทะเบียน
+            const loginForm = document.getElementById('login-form');
+            const loginPage = document.getElementById('login-page');
+            const mainContent = document.getElementById('main-content');
+            
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                userData.name = document.getElementById('name').value;
+                userData.organization = document.getElementById('organization').value;
+                userData.province = document.getElementById('province').value;
+                
+                // แสดงหน้าหลัก
+                loginPage.style.display = 'none';
+                mainContent.style.display = 'block';
+                
+                // ตั้งค่าชื่อบนพื้นที่ลงนาม
+                const signerNames = document.querySelectorAll('.signer-name');
+                signerNames.forEach(function(elem) {
+                    elem.textContent = userData.name;
+                    if (userData.organization) {
+                        elem.textContent += ' (' + userData.organization + ')';
+                    }
+                });
+            });
+
             const images = document.querySelectorAll('.card-image');
             images.forEach(img => {
                 img.crossOrigin = "anonymous";
@@ -482,6 +689,10 @@
                             cardFront.style.backgroundColor = '#FFF9C4';
                         } else if (img.alt === 'สมเด็จพระบรมราชชนนีพันปีหลวง') {
                             cardFront.style.backgroundColor = '#91A3B0';
+                        } else if (img.alt === 'สมเด็จพระเทพรัตนราชสุดาฯ') {
+                            cardFront.style.backgroundColor = '#FFF9C4';
+                        } else if (img.alt === 'ทูลกระหม่อมหญิงอุบลรัตนราชกัญญา') {
+                            cardFront.style.backgroundColor = '#FFDF00';
                         } else if (img.alt === 'ถวายพระพรทั่วไป') {
                             cardFront.style.backgroundColor = '#FFDF00';
                         } else {
