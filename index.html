@@ -132,14 +132,53 @@
         .card-back {
             transform: rotateY(180deg);
             color: #00539C;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-            padding: 30px;
+            background-color: #FFF9C4;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
         }
 
-        .royal-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #F9A825;
+        .card-back h2 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .card-back p {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .birthday-back, .coronation-back, .fathersday-back, .newyear-back, .nationalday-back, .general-back, .queen-back, .princess-back, .prince-back {
+            background-color: #FFF9C4;
+        }
+        
+        .queen-mother-back {
+            background-color: #C1D9E5;
+        }
+
+        .signature-area {
+            margin-top: 10px;
+            padding: 5px;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+        
+        .signature-line {
+            width: 80%;
+            height: 1px;
+            background-color: #00539C;
+            margin: 5px auto;
+        }
+        
+        .signature-area p {
+            margin: 5px 0;
+            font-size: 0.8rem;
         }
 
         .footer {
@@ -167,61 +206,6 @@
                 gap: 40px;
             }
         }
-
-        /* สีพื้นหลังด้านหลังการ์ด */
-        .birthday-back {
-            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
-        }
-        
-        .coronation-back {
-            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
-        }
-        
-        .fathersday-back {
-            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
-        }
-        
-        .newyear-back {
-            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
-        }
-        
-        .nationalday-back {
-            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
-        }
-        
-        .general-back {
-            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
-        }
-        
-        .queen-back {
-            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
-        }
-        
-        .princess-back {
-            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
-        }
-        
-        .prince-back {
-            background: linear-gradient(315deg, #FFDF00 0%, #FFF9C4 100%);
-        }
-        
-        .queen-mother-back {
-            background: linear-gradient(315deg, #91A3B0 0%, #C1D9E5 100%);
-        }
-
-        .signature-area {
-            margin-top: 20px;
-            padding: 10px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .signature-line {
-            width: 80%;
-            height: 1px;
-            background-color: #00539C;
-            margin: 10px auto;
-        }
     </style>
 </head>
 <body>
@@ -241,7 +225,9 @@
                 </div>
                 <div class="card-back queen-mother-back">
                     <h2>น้อมรำลึกในพระมหากรุณาธิคุณ</h2>
-                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอน้อมรำลึกในพระมหากรุณาธิคุณ ของสมเด็จพระบรมราชชนนีพันปีหลวง ผู้ทรงเป็นแม่ของแผ่นดิน พระองค์ทรงเป็นมิ่งขวัญของพสกนิกรชาวไทยตลอดไป</p>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</p>
+                    <p>ข้าพระพุทธเจ้าขอน้อมรำลึกในพระมหากรุณาธิคุณ</p> 
+                    <p>สมเด็จพระบรมราชชนนีพันปีหลวง</p>
                     <div class="signature-area">
                         <div class="signature-line"></div>
                         <p>ลงนามถวายความเคารพ</p>
@@ -262,7 +248,9 @@
                 </div>
                 <div class="card-back birthday-back">
                     <h2>ขอพระองค์ทรงพระเจริญ</h2>
-                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล ขอพระองค์ทรงพระเจริญยิ่งยืนนาน</p>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</p>
+                    <p>ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล</p>
+                    <p>แด่พระบาทสมเด็จพระเจ้าอยู่หัว</p>
                     <div class="signature-area">
                         <div class="signature-line"></div>
                         <p>ลงนามถวายพระพร</p>
@@ -277,13 +265,15 @@
                 <div class="card-front">
                     <img src="images/born.jpg" alt="วันประสูติ" class="card-image">
                     <div class="card-content">
-                        <h2>วันประสูติ</h2>
+                        <h2>วันคล้ายวันประสูติ</h2>
                         <p>28 กรกฎาคม 2495</p>
                     </div>
                 </div>
                 <div class="card-back birthday-back">
                     <h2>เนื่องในวันประสูติ</h2>
-                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล เนื่องในวันคล้ายวันประสูติ ขอพระองค์ทรงพระเจริญ ทรงมีพระชนมายุยิ่งยืนนาน เป็นมิ่งขวัญของปวงชนชาวไทยตลอดไป</p>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</p>
+                    <p>ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล</p>
+                    <p>เนื่องในวันคล้ายวันประสูติ</p>
                     <div class="signature-area">
                         <div class="signature-line"></div>
                         <p>ลงนามถวายพระพร</p>
@@ -304,7 +294,9 @@
                 </div>
                 <div class="card-back coronation-back">
                     <h2>เนื่องในวันฉัตรมงคล</h2>
-                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล ขอพระองค์ทรงพระเจริญ มีพระชนมายุยิ่งยืนนาน เป็นมิ่งขวัญของปวงชนชาวไทยตลอดไป</p>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</p>
+                    <p>ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล</p>
+                    <p>ขอพระองค์ทรงพระเจริญ</p>
                     <div class="signature-area">
                         <div class="signature-line"></div>
                         <p>ลงนามถวายพระพร</p>
@@ -319,13 +311,15 @@
                 <div class="card-front">
                     <img src="images/queen.jpg" alt="สมเด็จพระนางเจ้าฯ พระบรมราชินี" class="card-image">
                     <div class="card-content">
-                        <h2>สมเด็จพระนางเจ้าฯ พระบรมราชินี</h2>
-                        <p>3 มิถุนายน</p>
+                        <h2>สมเด็จพระนางเจ้าฯ</h2>
+                        <p>พระบรมราชินี</p>
                     </div>
                 </div>
                 <div class="card-back coronation-back">
                     <h2>ขอพระองค์ทรงพระเจริญ</h2>
-                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล แด่สมเด็จพระนางเจ้าฯ พระบรมราชินี ขอพระองค์ทรงพระเจริญยิ่งยืนนาน คู่เคียงพระบาทสมเด็จพระเจ้าอยู่หัว</p>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</p>
+                    <p>ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล</p>
+                    <p>แด่สมเด็จพระนางเจ้าฯ พระบรมราชินี</p>
                     <div class="signature-area">
                         <div class="signature-line"></div>
                         <p>ลงนามถวายพระพร</p>
@@ -346,7 +340,9 @@
                 </div>
                 <div class="card-back fathersday-back">
                     <h2>ด้วยความจงรักภักดี</h2>
-                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล ขอพระองค์ทรงพระเจริญ พระบารมีปกเกล้าปกกระหม่อมชาวไทยให้ร่มเย็นเป็นสุขตลอดไป</p>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</p>
+                    <p>ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล</p>
+                    <p>เนื่องในวันพ่อแห่งชาติ</p>
                     <div class="signature-area">
                         <div class="signature-line"></div>
                         <p>ลงนามถวายพระพร</p>
@@ -361,13 +357,15 @@
                 <div class="card-front">
                     <img src="images/princess1.jpg" alt="สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าพัชรกิติยาภาฯ" class="card-image">
                     <div class="card-content">
-                        <h2>สมเด็จพระเจ้าลูกเธอ</h2>
-                        <p>เจ้าฟ้าพัชรกิติยาภาฯ</p>
+                        <h2>เจ้าฟ้าหญิงพัชรกิติยาภาฯ</h2>
+                        <p>พระราชธิดาองค์ใหญ่</p>
                     </div>
                 </div>
                 <div class="card-back newyear-back">
                     <h2>ขอพระองค์ทรงพระเจริญ</h2>
-                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล แด่สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าพัชรกิติยาภา นเรนทิราเทพยวดี กรมหลวงราชสาริณีสิริพัชร มหาวัชรราชธิดา ขอพระองค์ทรงพระเจริญ</p>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</p>
+                    <p>ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล</p>
+                    <p>แด่เจ้าฟ้าหญิงพัชรกิติยาภาฯ</p>
                     <div class="signature-area">
                         <div class="signature-line"></div>
                         <p>ลงนามถวายพระพร</p>
@@ -382,13 +380,15 @@
                 <div class="card-front">
                     <img src="images/princess2.jpg" alt="สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าสิริวัณณวรีฯ" class="card-image">
                     <div class="card-content">
-                        <h2>สมเด็จพระเจ้าลูกเธอ</h2>
-                        <p>เจ้าฟ้าสิริวัณณวรีฯ</p>
+                        <h2>เจ้าฟ้าหญิงสิริวัณณวรีฯ</h2>
+                        <p>พระราชธิดาองค์เล็ก</p>
                     </div>
                 </div>
                 <div class="card-back nationalday-back">
                     <h2>ขอพระองค์ทรงพระเจริญ</h2>
-                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล แด่สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าสิริวัณณวรี นารีรัตนราชกัญญา ขอพระองค์ทรงพระเจริญ มีพระพลานามัยแข็งแรงสมบูรณ์</p>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</p>
+                    <p>ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล</p>
+                    <p>แด่เจ้าฟ้าหญิงสิริวัณณวรีฯ</p>
                     <div class="signature-area">
                         <div class="signature-line"></div>
                         <p>ลงนามถวายพระพร</p>
@@ -403,13 +403,15 @@
                 <div class="card-front">
                     <img src="images/prince.jpg" alt="สมเด็จพระเจ้าลูกยาเธอ เจ้าฟ้าทีปังกรฯ" class="card-image">
                     <div class="card-content">
-                        <h2>สมเด็จพระเจ้าลูกยาเธอ</h2>
-                        <p>เจ้าฟ้าทีปังกรฯ</p>
+                        <h2>เจ้าฟ้าชายทีปังกรฯ</h2>
+                        <p>พระราชโอรส</p>
                     </div>
                 </div>
                 <div class="card-back general-back">
                     <h2>ขอพระองค์ทรงพระเจริญ</h2>
-                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล แด่สมเด็จพระเจ้าลูกยาเธอ เจ้าฟ้าทีปังกรรัศมีโชติ มหาวชิโรตตมางกูร สิริวิบูลยราชกุมาร ขอพระองค์ทรงพระเจริญ</p>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</p>
+                    <p>ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล</p>
+                    <p>แด่เจ้าฟ้าชายทีปังกรฯ</p>
                     <div class="signature-area">
                         <div class="signature-line"></div>
                         <p>ลงนามถวายพระพร</p>
@@ -430,7 +432,9 @@
                 </div>
                 <div class="card-back general-back">
                     <h2>ด้วยความจงรักภักดี</h2>
-                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล ขอพระองค์ทรงพระเจริญ พระบารมีแผ่ไพศาล ทรงมีพระพลานามัยแข็งแรงสมบูรณ์</p>
+                    <p>ด้วยเกล้าด้วยกระหม่อม ขอเดชะ</p>
+                    <p>ข้าพระพุทธเจ้าขอถวายพระพรชัยมงคล</p>
+                    <p>ขอพระองค์ทรงพระเจริญ</p>
                     <div class="signature-area">
                         <div class="signature-line"></div>
                         <p>ลงนามถวายพระพร</p>
