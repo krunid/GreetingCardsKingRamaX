@@ -251,6 +251,12 @@
             margin-bottom: 5px;
         }
 
+        .signature-label-1, .signature-label-2 {
+            margin: 3px 0;
+            font-size: 0.8rem;
+            color: #00539C;
+        }
+
         .footer {
             width: 100%;
             background-color: rgba(0, 83, 156, 0.8);
@@ -426,7 +432,8 @@
                     <div class="signature-area">
                         <div class="signer-name"></div>
                         <div class="signature-line"></div>
-                        <p>ลงนามถวายพระพร</p>
+                        <div class="signature-label-1">ลงชื่อ</div>
+                        <div class="signature-label-2">ถวายพระพร</div>
                     </div>
                 </div>
             </div>
@@ -651,13 +658,31 @@
                 loginPage.style.display = 'none';
                 mainContent.style.display = 'block';
                 
-                // ตั้งค่าชื่อบนพื้นที่ลงนาม
+                // ใส่ชื่อใน .signer-name ทุกอัน
+                updateAllSignerNames();
+            });
+            
+            // ฟังก์ชันสำหรับอัพเดตชื่อทั้งหมด
+            function updateAllSignerNames() {
                 const signerNames = document.querySelectorAll('.signer-name');
+                
                 signerNames.forEach(function(elem) {
-                    elem.textContent = userData.name;
+                    let displayName = userData.name;
                     if (userData.organization) {
-                        elem.textContent += ' (' + userData.organization + ')';
+                        displayName += ' (' + userData.organization + ')';
                     }
+                    elem.textContent = displayName;
+                });
+            }
+
+            // ตั้งค่า event listener สำหรับการพลิกการ์ด
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    const cardInner = card.querySelector('.card-inner');
+                    cardInner.classList.toggle('flipped');
+                    
+                    // อัพเดตชื่อทุกครั้งที่มีการพลิกการ์ด
+                    setTimeout(updateAllSignerNames, 100);
                 });
             });
 
@@ -700,15 +725,6 @@
                         }
                     }
                 };
-            });
-        });
-
-        // จัดการการพลิกการ์ด
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('click', (e) => {
-                // สลับคลาส flipped เพื่อพลิกการ์ด
-                const cardInner = card.querySelector('.card-inner');
-                cardInner.classList.toggle('flipped');
             });
         });
     </script>
