@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <style>
+        /* CSS เดิมทั้งหมดเหมือนเดิม */
         body {
             font-family: 'Prompt', 'Sarabun', sans-serif;
             background: linear-gradient(to bottom, #FFDF00, #FFF9C4, #F9F8EB);
@@ -34,7 +35,7 @@
         }
 
         .login-box h2 {
-            color: #005 Bre39C;
+            color: #00539C;
             margin-bottom: 20px;
             text-align: center;
         }
@@ -298,6 +299,7 @@
     </style>
 </head>
 <body>
+    <!-- HTML เดิมทั้งหมดเหมือนเดิม -->
     <div id="login-page" class="login-container">
         <div class="login-box">
             <h2>ลงทะเบียนถวายพระพร</h2>
@@ -333,7 +335,7 @@
                         <option value="ตาก">ตาก</option>
                         <option value="นครนายก">นครนายก</option>
                         <option value="นครปฐม">นครปฐม</option>
-                        <option value="นครพนม">นคร Pattiพนม</option>
+                        <option value="นครพนม">นครพนม</option>
                         <option value="นครราชสีมา">นครราชสีมา</option>
                         <option value="นครศรีธรรมราช">นครศรีธรรมราช</option>
                         <option value="นครสวรรค์">นครสวรรค์</option>
@@ -403,7 +405,6 @@
         <p style="color: #00539C; text-align: center; margin-bottom: 20px;">กดที่การ์ดเพื่อลงนามถวายพระพร</p>
     
         <div class="card-container">
-            <!-- สมเด็จพระบรมราชชนนีพันปีหลวง -->
             <div class="card">
                 <div class="card-inner">
                     <div class="card-front">
@@ -428,7 +429,6 @@
                 </div>
             </div>
 
-            <!-- วันเฉลิมพระชนมพรรษา -->
             <div class="card">
                 <div class="card-inner">
                     <div class="card-front">
@@ -453,7 +453,6 @@
                 </div>
             </div>
 
-            <!-- วันฉัตรมงคล -->
             <div class="card">
                 <div class="card-inner">
                     <div class="card-front">
@@ -478,7 +477,6 @@
                 </div>
             </div>
 
-            <!-- สมเด็จพระนางเจ้าฯ พระบรมราชินี -->
             <div class="card">
                 <div class="card-inner">
                     <div class="card-front">
@@ -503,7 +501,6 @@
                 </div>
             </div>
 
-            <!-- สมเด็จพระเทพรัตนราชสุดาฯ -->
             <div class="card">
                 <div class="card-inner">
                     <div class="card-front">
@@ -528,7 +525,6 @@
                 </div>
             </div>
 
-            <!-- ทูลกระหม่อมหญิงอุบลรัตนราชกัญญา -->
             <div class="card">
                 <div class="card-inner">
                     <div class="card-front">
@@ -553,7 +549,6 @@
                 </div>
             </div>
             
-            <!-- สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าพัชรกิติยาภาฯ -->
             <div class="card">
                 <div class="card-inner">
                     <div class="card-front">
@@ -578,7 +573,6 @@
                 </div>
             </div>
 
-            <!-- สมเด็จพระเจ้าลูกเธอ เจ้าฟ้าสิริวัณณวรีฯ -->
             <div class="card">
                 <div class="card-inner">
                     <div class="card-front">
@@ -603,13 +597,12 @@
                 </div>
             </div>
 
-            <!-- สมเด็จพระเจ้าลูกยาเธอ เจ้าฟ้าทีปังกรฯ -->
             <div class="card">
                 <div class="card-inner">
                     <div class="card-front">
                         <img src="images/prince.jpg" alt="สมเด็จพระเจ้าลูกยาเธอ เจ้าฟ้าทีปังกรฯ" class="card-image">
                         <div class="card-content">
-                            <h2>เจ้าฟ้าชายทีปังกรฯ</h2>
+                            <h2>เจ้า�ฟ้าชายทีปังกรฯ</h2>
                             <p>พระราชโอรส</p>
                         </div>
                     </div>
@@ -737,19 +730,32 @@
         function sendEmail(button) {
             const card = button.closest('.card');
             const cardInner = card.querySelector('.card-inner');
+            const cardBack = card.querySelector('.card-back');
             
             if (!cardInner.classList.contains('flipped')) {
                 alert('กรุณาคลิกที่การ์ดเพื่อดูด้านหลังก่อนส่งอีเมล');
                 return;
             }
 
-            html2canvas(card.querySelector('.card-back'), {
+            // สร้าง canvas ใหม่เพื่อแก้ไขการหมุน
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCanvas.width = 300;  // ความกว้างของการ์ด
+            tempCanvas.height = 400; // ความสูงของการ์ด
+
+            html2canvas(cardBack, {
                 scale: 2,
                 useCORS: true,
                 backgroundColor: null
             }).then(canvas => {
-                const imageData = canvas.toDataURL('image/png');
+                // แก้ไขการหมุนของภาพ
+                tempCtx.translate(300, 0);
+                tempCtx.rotate(Math.PI); // หมุน 180 องศา
+                tempCtx.drawImage(canvas, -300, -400);
                 
+                const imageData = tempCanvas.toDataURL('image/png');
+                
+                // สร้าง mailto link
                 const subject = encodeURIComponent('การ์ดถวายพระพร');
                 const body = encodeURIComponent(
                     'สวัสดี,\n\n' +
@@ -761,14 +767,20 @@
                     'ด้วยความเคารพ,\nทีมงานการ์ดถวายพระพร'
                 );
                 
-                window.location.href = `mailto:${userData.email}?subject=${subject}&body=${body}`;
+                // เปิด email client
+                const mailtoLink = `mailto:${userData.email}?subject=${subject}&body=${body}`;
+                window.location.href = mailtoLink;
                 
-                alert('ระบบกำลังเปิดแอปพลิเคชันอีเมลของคุณ\nกรุณาตรวจสอบและแนบไฟล์ภาพการ์ดที่บันทึกไว้ด้วยตนเอง');
+                // บันทึกภาพ
+                setTimeout(() => {
+                    const link = document.createElement('a');
+                    link.download = 'prayer-card.png';
+                    link.href = imageData;
+                    link.click();
+                    
+                    alert('ระบบได้เปิดแอปพลิเคชันอีเมลของคุณแล้ว\nกรุณาแนบไฟล์ prayer-card.png ที่บันทึกไว้ด้วยตนเอง');
+                }, 500);
                 
-                const link = document.createElement('a');
-                link.download = 'prayer-card.png';
-                link.href = imageData;
-                link.click();
             }).catch(error => {
                 console.error('Error generating card image:', error);
                 alert('เกิดข้อผิดพลาดในการสร้างภาพการ์ด กรุณาลองใหม่อีกครั้ง');
