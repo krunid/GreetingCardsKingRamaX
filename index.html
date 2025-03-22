@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <style>
-        /* CSS เดิมทั้งหมดเหมือนเดิม ปรับเฉพาะส่วนนี้ */
+        /* CSS เดิมทั้งหมดเหมือนเดิม */
         body {
             font-family: 'Prompt', 'Sarabun', sans-serif;
             background: linear-gradient(to bottom, #FFDF00, #FFF9C4, #F9F8EB);
@@ -764,7 +764,13 @@
             const combinedCanvas = document.createElement('canvas');
             const ctx = combinedCanvas.getContext('2d');
             combinedCanvas.width = 300;
-            combinedCanvas.height = 800; // ความสูงรวมของด้านหน้า (400) + ด้านหลัง (400)
+            combinedCanvas.height = 800;
+
+            // สร้าง canvas ชั่วคราวสำหรับหมุนด้านหลัง
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCanvas.width = 300;
+            tempCanvas.height = 400;
 
             // รอให้การ์ดพลิกกลับเสร็จ
             setTimeout(() => {
@@ -780,10 +786,16 @@
                         backgroundColor: null
                     })
                 ]).then(([frontCanvas, backCanvas]) => {
-                    // วาดด้านหน้าที่ตำแหน่งบน
+                    // วาดด้านหน้า
                     ctx.drawImage(frontCanvas, 0, 0, 300, 400);
-                    // วาดด้านหลังที่ตำแหน่งล่าง
-                    ctx.drawImage(backCanvas, 0, 400, 300, 400);
+
+                    // หมุนด้านหลังให้ถูกต้อง
+                    tempCtx.translate(300, 400);
+                    tempCtx.rotate(Math.PI); // หมุน 180 องศา
+                    tempCtx.drawImage(backCanvas, 0, 0, 300, 400, -300, -400, 300, 400);
+
+                    // วาดด้านหลังที่หมุนแล้วลงใน canvas หลัก
+                    ctx.drawImage(tempCanvas, 0, 400, 300, 400);
 
                     const imageData = combinedCanvas.toDataURL('image/png');
                     const link = document.createElement('a');
@@ -796,7 +808,7 @@
                     console.error('Error generating card image:', error);
                     alert('เกิดข้อผิดพลาดในการบันทึกการ์ด กรุณาลองใหม่อีกครั้ง');
                 });
-            }, 800); // รอ 800ms ให้ตรงกับ animation duration
+            }, 800);
         }
     </script>
 </body>
