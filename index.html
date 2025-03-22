@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <style>
-        /* CSS เดิมทั้งหมดเหมือนเดิม เพิ่มเติมเฉพาะส่วนนี้ */
+        /* CSS เดิมทั้งหมดเหมือนเดิม ปรับเฉพาะส่วนนี้ */
         body {
             font-family: 'Prompt', 'Sarabun', sans-serif;
             background: linear-gradient(to bottom, #FFDF00, #FFF9C4, #F9F8EB);
@@ -255,7 +255,7 @@
             color: #666;
         }
 
-        .email-btn {
+        .save-btn {
             background-color: #F9A825;
             color: white;
             border: none;
@@ -265,16 +265,16 @@
             font-size: 0.9rem;
             margin-top: 10px;
             transition: background-color 0.3s;
-            display: none; /* ซ่อนปุ่มเริ่มต้น */
+            display: none;
         }
 
-        .email-btn:hover {
+        .save-btn:hover {
             background-color: #e69500;
         }
 
         .card-wrapper {
             position: relative;
-            margin-bottom: 40px; /* เพิ่มระยะห่างสำหรับปุ่ม */
+            margin-bottom: 40px;
         }
 
         .footer {
@@ -410,7 +410,6 @@
         <p style="color: #00539C; text-align: center; margin-bottom: 20px;">กดที่การ์ดเพื่อลงนามถวายพระพร</p>
     
         <div class="card-container">
-            <!-- ห่อการ์ดด้วย div.card-wrapper และเพิ่มปุ่มนอกการ์ด -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-inner">
@@ -434,7 +433,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="email-btn" onclick="sendEmail(this)">ส่งไป Email</button>
+                <button class="save-btn" onclick="saveCard(this)">บันทึก</button>
             </div>
 
             <div class="card-wrapper">
@@ -460,7 +459,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="email-btn" onclick="sendEmail(this)">ส่งไป Email</button>
+                <button class="save-btn" onclick="saveCard(this)">บันทึก</button>
             </div>
 
             <div class="card-wrapper">
@@ -486,7 +485,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="email-btn" onclick="sendEmail(this)">ส่งไป Email</button>
+                <button class="save-btn" onclick="saveCard(this)">บันทึก</button>
             </div>
 
             <div class="card-wrapper">
@@ -512,7 +511,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="email-btn" onclick="sendEmail(this)">ส่งไป Email</button>
+                <button class="save-btn" onclick="saveCard(this)">บันทึก</button>
             </div>
 
             <div class="card-wrapper">
@@ -538,7 +537,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="email-btn" onclick="sendEmail(this)">ส่งไป Email</button>
+                <button class="save-btn" onclick="saveCard(this)">บันทึก</button>
             </div>
 
             <div class="card-wrapper">
@@ -564,7 +563,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="email-btn" onclick="sendEmail(this)">ส่งไป Email</button>
+                <button class="save-btn" onclick="saveCard(this)">บันทึก</button>
             </div>
             
             <div class="card-wrapper">
@@ -590,7 +589,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="email-btn" onclick="sendEmail(this)">ส่งไป Email</button>
+                <button class="save-btn" onclick="saveCard(this)">บันทึก</button>
             </div>
 
             <div class="card-wrapper">
@@ -616,7 +615,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="email-btn" onclick="sendEmail(this)">ส่งไป Email</button>
+                <button class="save-btn" onclick="saveCard(this)">บันทึก</button>
             </div>
 
             <div class="card-wrapper">
@@ -642,7 +641,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="email-btn" onclick="sendEmail(this)">ส่งไป Email</button>
+                <button class="save-btn" onclick="saveCard(this)">บันทึก</button>
             </div>
         </div>
     </div>
@@ -657,20 +656,11 @@
         let userData = {
             name: '',
             organization: '',
-            province: '',
-            email: ''
+            province: ''
         };
 
         document.addEventListener('DOMContentLoaded', function() {
             const loginForm = document.getElementById('login-form');
-            const emailInput = document.createElement('div');
-            emailInput.className = 'form-group';
-            emailInput.innerHTML = `
-                <label for="email">อีเมล:</label>
-                <input type="email" id="email" name="email" required>
-            `;
-            loginForm.insertBefore(emailInput, loginForm.querySelector('button'));
-
             const loginPage = document.getElementById('login-page');
             const mainContent = document.getElementById('main-content');
             
@@ -679,7 +669,6 @@
                 userData.name = document.getElementById('name').value;
                 userData.organization = document.getElementById('organization').value;
                 userData.province = document.getElementById('province').value;
-                userData.email = document.getElementById('email').value;
                 
                 loginPage.style.display = 'none';
                 mainContent.style.display = 'block';
@@ -707,15 +696,14 @@
                 });
             }
 
-            // การจัดการการพลิกการ์ดและแสดงปุ่ม
             document.querySelectorAll('.card-wrapper').forEach(wrapper => {
                 const card = wrapper.querySelector('.card');
                 const cardInner = card.querySelector('.card-inner');
-                const emailBtn = wrapper.querySelector('.email-btn');
+                const saveBtn = wrapper.querySelector('.save-btn');
 
                 card.addEventListener('click', (e) => {
                     cardInner.classList.toggle('flipped');
-                    emailBtn.style.display = cardInner.classList.contains('flipped') ? 'block' : 'none';
+                    saveBtn.style.display = cardInner.classList.contains('flipped') ? 'block' : 'none';
                     setTimeout(updateAllSignerNames, 100);
                 });
             });
@@ -756,51 +744,59 @@
             });
         });
 
-        function sendEmail(button) {
+        function saveCard(button) {
             const wrapper = button.closest('.card-wrapper');
             const card = wrapper.querySelector('.card');
             const cardInner = card.querySelector('.card-inner');
+            const cardFront = card.querySelector('.card-front');
             const cardBack = card.querySelector('.card-back');
             
             if (!cardInner.classList.contains('flipped')) {
-                alert('กรุณาคลิกที่การ์ดเพื่อดูด้านหลังก่อนส่งอีเมล');
+                alert('กรุณาคลิกที่การ์ดเพื่อดูด้านหลังก่อนบันทึก');
                 return;
             }
 
-            html2canvas(cardBack, {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: null
-            }).then(canvas => {
-                const imageData = canvas.toDataURL('image/png');
-                
-                const subject = encodeURIComponent('การ์ดถวายพระพร');
-                const body = encodeURIComponent(
-                    'สวัสดี,\n\n' +
-                    'นี่คือการ์ดถวายพระพรที่คุณได้ลงนาม\n' +
-                    'ชื่อ: ' + userData.name + '\n' +
-                    (userData.organization ? 'หน่วยงาน: ' + userData.organization + '\n' : '') +
-                    'จังหวัด: ' + userData.province + '\n\n' +
-                    'กรุณาดูภาพการ์ดที่แนบมาในอีเมลนี้\n\n' +
-                    'ด้วยความเคารพ,\nทีมงานการ์ดถวายพระพร'
-                );
-                
-                const mailtoLink = `mailto:${userData.email}?subject CHILDREN=${subject}&body=${body}`;
-                window.location.href = mailtoLink;
-                
-                setTimeout(() => {
+            // พลิกกลับไปด้านหน้าก่อนบันทึก
+            cardInner.classList.remove('flipped');
+            button.style.display = 'none';
+
+            // สร้าง canvas ขนาดใหญ่เพื่อรวมทั้งด้านหน้าและด้านหลัง
+            const combinedCanvas = document.createElement('canvas');
+            const ctx = combinedCanvas.getContext('2d');
+            combinedCanvas.width = 300;
+            combinedCanvas.height = 800; // ความสูงรวมของด้านหน้า (400) + ด้านหลัง (400)
+
+            // รอให้การ์ดพลิกกลับเสร็จ
+            setTimeout(() => {
+                Promise.all([
+                    html2canvas(cardFront, {
+                        scale: 2,
+                        useCORS: true,
+                        backgroundColor: null
+                    }),
+                    html2canvas(cardBack, {
+                        scale: 2,
+                        useCORS: true,
+                        backgroundColor: null
+                    })
+                ]).then(([frontCanvas, backCanvas]) => {
+                    // วาดด้านหน้าที่ตำแหน่งบน
+                    ctx.drawImage(frontCanvas, 0, 0, 300, 400);
+                    // วาดด้านหลังที่ตำแหน่งล่าง
+                    ctx.drawImage(backCanvas, 0, 400, 300, 400);
+
+                    const imageData = combinedCanvas.toDataURL('image/png');
                     const link = document.createElement('a');
                     link.download = 'prayer-card.png';
                     link.href = imageData;
                     link.click();
-                    
-                    alert('ระบบได้เปิดแอปพลิเคชันอีเมลของคุณแล้ว\nกรุณาแนบไฟล์ prayer-card.png ที่บันทึกไว้ด้วยตนเอง');
-                }, 500);
-                
-            }).catch(error => {
-                console.error('Error generating card image:', error);
-                alert('เกิดข้อผิดพลาดในการสร้างภาพการ์ด กรุณาลองใหม่อีกครั้ง');
-            });
+
+                    alert('บันทึกการ์ดเรียบร้อยแล้ว');
+                }).catch(error => {
+                    console.error('Error generating card image:', error);
+                    alert('เกิดข้อผิดพลาดในการบันทึกการ์ด กรุณาลองใหม่อีกครั้ง');
+                });
+            }, 800); // รอ 800ms ให้ตรงกับ animation duration
         }
     </script>
 </body>
